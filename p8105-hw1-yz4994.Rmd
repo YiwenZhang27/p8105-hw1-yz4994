@@ -118,5 +118,5 @@ as.numeric(df2$factor_vec)    # converts factor levels → underlying integer co
 ```{markdown}
 - Converting **logical** to numeric turns TRUE/FALSE into 1/0, which explains why taking the mean of a logical vector gives the proportion of TRUEs.  
 - Converting **character** to numeric produces NAs (with a warning), since characters like "a", "b", "c" have no numeric representation.  
-- Converting **factor** to numeric produces the underlying integer codes of the factor levels, not the labels. This explains why you can’t take a mean of factors directly — the numbers would represent codes, not meaningful values.  
+- Converting **factor** to numeric produces the underlying integer codes of the factor levels, not the labels. This explains why I can’t take a mean of factors directly — the numbers would represent codes, not meaningful values.  
 ```
