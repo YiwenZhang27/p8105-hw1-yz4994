@@ -1,0 +1,402 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={p8105-hw1-yz4994},
+  pdfauthor={YiwenZhang},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{p8105-hw1-yz4994}
+\author{YiwenZhang}
+\date{2025-09-19}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}\label{problem-1}
+
+I start by loading the \texttt{moderndive} package and accessing the
+\texttt{early\_january\_weather} dataset.I have installed the package
+``moderndive'' in the console.
+
+Now I load required libraries
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(moderndive)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.5.2     v tibble    3.3.0
+## v lubridate 1.9.4     v tidyr     1.3.1
+## v purrr     1.1.0     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+Now I load the dataset we need
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(}\StringTok{"early\_january\_weather"}\NormalTok{)}
+\FunctionTok{nrow}\NormalTok{(early\_january\_weather)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 358
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ncol}\NormalTok{(early\_january\_weather)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(early\_january\_weather}\SpecialCharTok{$}\NormalTok{temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 39.58212
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(early\_january\_weather)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 358
+## Columns: 15
+## $ origin     <chr> "EWR", "EWR", "EWR", "EWR", "EWR", "EWR", "EWR", "EWR", "EW~
+## $ year       <int> 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013,~
+## $ month      <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,~
+## $ day        <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,~
+## $ hour       <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, ~
+## $ temp       <dbl> 39.02, 39.02, 39.02, 39.92, 39.02, 37.94, 39.02, 39.92, 39.~
+## $ dewp       <dbl> 26.06, 26.96, 28.04, 28.04, 28.04, 28.04, 28.04, 28.04, 28.~
+## $ humid      <dbl> 59.37, 61.63, 64.43, 62.21, 64.43, 67.21, 64.43, 62.21, 62.~
+## $ wind_dir   <dbl> 270, 250, 240, 250, 260, 240, 240, 250, 260, 260, 260, 330,~
+## $ wind_speed <dbl> 10.35702, 8.05546, 11.50780, 12.65858, 12.65858, 11.50780, ~
+## $ wind_gust  <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 20.~
+## $ precip     <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ pressure   <dbl> 1012.0, 1012.3, 1012.5, 1012.2, 1011.9, 1012.4, 1012.2, 101~
+## $ visib      <dbl> 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,~
+## $ time_hour  <dttm> 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 03:00~
+\end{verbatim}
+
+According to the help file of the dataset, I get the following
+information:
+
+1.Description:Hourly meteorological data for LGA, JFK and EWR for the
+month of January 2013.The dataset is a data frame of 358rows
+representing hourly measurements and 15 variables (358rows and 15
+columns).
+
+2.The mean temperature is 39.58212 F.
+
+3.The variables in this dataset, including names / values of important
+variables:
+
+origin: Weather station, e.g.EWR
+
+year:year of recording time, e.g.2013
+
+month: month of recording time, e.g.1
+
+day: day of recording time, e.g.1
+
+hour: hour of recording time, e.g.3
+
+temp: temperature in F, e.g.39.02
+
+dewp: dewpoint in F, e.g.26.96
+
+humid: relative humidity, e.g.59.37
+
+wind\_dir: winf direction (in degree), e.g.270
+
+wind\_speed: wind speed, e.g.10.35702
+
+wind\_gust: wind gust speed (in mph), e.g.20
+
+precip: precipitation, in inches, e.g.0
+
+pressure: sea level pressure in millibars, e.g.1012.3
+
+visib: visibility in miles, e.g.10
+
+time\_hour: date and hour of the recording as a POSIXct date,
+e.g.2013-01-01 01:00:00
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(early\_january\_weather, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ time\_hour, }\AttributeTok{y =}\NormalTok{ temp, }\AttributeTok{color =}\NormalTok{ humid)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.6}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Temperature vs Time in Early January 2013"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Time (hourly)"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Temperature (°F)"}\NormalTok{,}
+    \AttributeTok{color =} \StringTok{"Humidity"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{p8105-hw1-yz4994_files/figure-latex/unnamed-chunk-3-1.pdf}}
+
+\subsection{Export the plot}\label{export-the-plot}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"scatter\_temp\_time.png"}\NormalTok{, }\AttributeTok{width =} \DecValTok{7}\NormalTok{, }\AttributeTok{height =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Problem 2}\label{problem-2}
+
+This problem emphasizes variable types and coercion in R.
+
+\subsection{1.Create the data frame}\label{create-the-data-frame}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)   }\CommentTok{\# for reproducibility}
+
+\NormalTok{df2 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{sample\_norm =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{),                       }\CommentTok{\# numeric}
+  \AttributeTok{logical\_vec =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{,                   }\CommentTok{\# logical}
+  \AttributeTok{char\_vec =} \FunctionTok{sample}\NormalTok{(letters, }\DecValTok{10}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{),}\CommentTok{\# character}
+  \AttributeTok{factor\_vec =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{sample}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"low"}\NormalTok{, }\StringTok{"med"}\NormalTok{, }\StringTok{"high"}\NormalTok{), }\DecValTok{10}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{))}
+\NormalTok{)}
+
+\NormalTok{df2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 4
+##    sample_norm logical_vec char_vec factor_vec
+##          <dbl> <lgl>       <chr>    <fct>     
+##  1     -0.560  TRUE        o        low       
+##  2     -0.230  TRUE        j        high      
+##  3      1.56   TRUE        m        med       
+##  4      0.0705 TRUE        g        low       
+##  5      0.129  FALSE       i        med       
+##  6      1.72   TRUE        i        low       
+##  7      0.461  TRUE        j        low       
+##  8     -1.27   FALSE       w        high      
+##  9     -0.687  TRUE        u        low       
+## 10     -0.446  FALSE       g        med
+\end{verbatim}
+
+\subsection{2. Take the mean of each
+variable}\label{take-the-mean-of-each-variable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{pull}\NormalTok{(df2,sample\_norm))   }\CommentTok{\# works: numeric}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.07462564
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{pull}\NormalTok{(df2,logical\_vec))  }\CommentTok{\# works: TRUE = 1, FALSE = 0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{pull}\NormalTok{(df2,char\_vec))      }\CommentTok{\# fails: characters cannot be averaged}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in mean.default(pull(df2, char_vec)): argument is not numeric or
+## logical: returning NA
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{pull}\NormalTok{(df2,factor\_vec))    }\CommentTok{\# fails: factors not numeric by default}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in mean.default(pull(df2, factor_vec)): argument is not numeric or
+## logical: returning NA
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\subsection{3. Explanation}\label{explanation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialStringTok{{-} }\NormalTok{**Numeric variable**: Taking the mean works as expected.  }
+\SpecialStringTok{{-} }\NormalTok{**Logical variable**: Taking the mean works; R treats }\InformationTok{\textasciigrave{}TRUE = 1\textasciigrave{}}\NormalTok{ and }\InformationTok{\textasciigrave{}FALSE = 0\textasciigrave{}}\NormalTok{. The mean is the proportion of TRUE values.  }
+\SpecialStringTok{{-} }\NormalTok{**Character variable**: Taking the mean fails because characters cannot be coerced to numbers automatically.  }
+\SpecialStringTok{{-} }\NormalTok{**Factor variable**: Taking the mean fails because factors are categorical labels, not numeric.  }
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{\texorpdfstring{4. Using
+\texttt{as.numeric}}{4. Using as.numeric}}\label{using-as.numeric}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{pull}\NormalTok{(df2,logical\_vec))   }\CommentTok{\# converts TRUE/FALSE → 1/0}
+\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{pull}\NormalTok{(df2,char\_vec))      }\CommentTok{\# returns NA with warning (cannot convert letters to numbers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: NAs introduced by coercion
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{pull}\NormalTok{(df2,factor\_vec))    }\CommentTok{\# converts factor levels → underlying integer codes (1, 2, 3)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Explanation}\label{explanation-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialStringTok{{-} }\NormalTok{Converting **logical** to numeric turns TRUE/FALSE into 1/0, which explains why taking the mean of a logical vector gives the proportion of TRUEs.  }
+\SpecialStringTok{{-} }\NormalTok{Converting **character** to numeric produces NAs (with a warning), since characters like "a", "b", "c" have no numeric representation.  }
+\SpecialStringTok{{-} }\NormalTok{Converting **factor** to numeric produces the underlying integer codes of the factor levels, not the labels. This explains why I can’t take a mean of factors directly — the numbers would represent codes, not meaningful values.  }
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
